@@ -45,24 +45,24 @@ if __name__ == "__main__":
 
     packets = rdpcap(pcap_file)
 
-    # Q1: Count the number of login attempts
+    # Q1: the number of login attempts
     attempts = count_login_attempts(packets, target_ip)
     print(f"Total login attempts made: {attempts}")
 
-    # Q2: Find credentials in the successful login attempt
+    # Q2: credentials in the successful login attempt
     credentials = find_successful_login_credentials(packets, target_ip, success_indicator)
     if credentials:
         print(f"Successful login attempt payload: {credentials}")
     else:
         print("No successful login attempt found.")
 
-    # Q3: Get the client's source port number for the successful login attempt
+    # Q3: client's source port number for the successful login attempt
     port = get_successful_login_port(packets, target_ip, success_indicator)
     if port:
         print(f"Client's source port for successful login attempt: {port}")
     else:
         print("No successful login attempt found.")
 
-    # Q4: Calculate total content length of all login attempt payloads
+    # Q4: total content length of all login attempt payloads
     total_length = total_content_length_of_login_attempts(packets, target_ip)
     print(f"Total content length of all login attempt payloads: {total_length}")
